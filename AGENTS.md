@@ -28,3 +28,9 @@ use the editor.
   own key and store it in Secrets.
 - **Secrets.** Lovable manages them. Do not put secret values in the repo.
 <!-- LOVABLE:END -->
+
+## Project rules
+
+- TrafficMonitor is a single-page app at `/`; sections live in `src/components/traffic/` and the header nav scrolls to section ids. Why: the original app the user recreated was one long scrolling page.
+- Traffic data is simulated client-side in `src/lib/traffic.ts` (no backend); map search uses OpenStreetMap Nominatim and routing uses the public OSRM server from the browser. Why: no keys or database needed.
+- Leaflet is only loaded in the browser (lazy import inside `ClientOnly`) and marker/route colours come from CSS classes using design tokens. Why: Leaflet touches `window` and SVG attributes cannot read CSS variables.
